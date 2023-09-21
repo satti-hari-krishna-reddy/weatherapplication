@@ -1,0 +1,119 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+.maincard{
+
+    background-color: rgba(255, 255, 255, 0.1);
+   -webkit-backdrop-filter: blur(7px);
+   backdrop-filter: blur(7px);
+   padding: 1.5em;
+   margin: 1em;
+   border-radius: 25px; 
+}
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+
+}
+.searchitem{
+    margin: 0.5em;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    outline: none;
+    border: none;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.searchitem:hover{
+    background-color: rgba(255, 255, 255, 0.4);
+    color: white;
+    transition: 0.3s;
+}
+.bar:hover{
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+}
+.bar{
+   outline: none; 
+   border:none;
+   padding: 0.5em 1em;
+   border-radius: 18px;
+   background:rgba(255, 255, 255, 0.2); 
+   color: white;
+   font-size: 100%;
+   font-family: inherit;
+}
+.weather{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.weather-info {
+    flex: 1;
+    text-align: center; 
+}
+
+.date-time {
+    flex: 1; 
+    text-align: center; }
+.data{
+    display: flex;
+    justify-content: space-between;
+}
+.humidity,
+.wind {
+    font-size: 110%;
+    background-color: rgba(0, 153, 255, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 0.4em;
+    border-radius: 10px;
+}
+.weather-icon{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.small-cards{
+    background-color: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+    padding: 17px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 100%;
+    margin: 15px;
+    width: 6rem;
+    height: 7rem;
+
+    
+}
+.first-three,.second-three{
+   display: flex;
+}
+
+@media screen and (max-width:800px) {
+    .weekly{
+        display: flex;
+    }
+    .first-three,.second-three{
+      display: inline;
+     }}
+     @media screen and (max-width:680px) {
+        body{
+        flex-direction: column;
+        align-items: center;
+    }}
