@@ -1,9 +1,6 @@
-
-// Replace 'YOUR_API_KEY' with your actual OpenWeather API key
 document.addEventListener('DOMContentLoaded', function() {
 const apiKey = 'e9ab6010ea00cd305a7faedeb79b746c';
 
-// Select HTML elements for the main card
 const cityNameElement = document.querySelector('.cityName');
 const tempElement = document.querySelector('.temp');
 const dateTimeElement = document.querySelector('.date-time');
@@ -12,12 +9,9 @@ const descriptionElement = document.querySelector('.description');
 const humidityElement = document.querySelector('.humidity div:nth-child(2)');
 const windElement = document.querySelector('.wind div:nth-child(2)');
 
-// Function to fetch weather data and update the main card HTML
 function fetchWeather(city) {
-  // Replace spaces in the city name with '+'
   city = city.replace(/\s+/g, '+');
 
-  // Construct the API URL
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
   fetch(apiUrl)
@@ -59,7 +53,6 @@ function fetchWeather(city) {
       console.error('Error fetching weather data:', error);
     });
 }
-// Add an event listener to the search button
 const searchButton = document.querySelector('.searchitem');
 const searchBar = document.querySelector('.bar');
 
@@ -68,21 +61,14 @@ searchButton.addEventListener('click', () => {
   fetchWeather(city);
   fetchWeeklyWeather(city);
 });
-// Function to fetch and update the small cards with weather data
-// Function to fetch and update the small cards with weather data
 function fetchWeeklyWeather(city) {
-  // Construct the API URL for the weekly forecast
   const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
-
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
-      // Extract the forecast data starting from the next day (Friday)
       const now = new Date();
       const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       let daysProcessed = 0;
-
-      // Select all elements with the class .small-cards
       const smallCards = document.querySelectorAll('.small-cards');
 
       for (let i = 0; i < data.list.length; i++) {
@@ -90,15 +76,12 @@ function fetchWeeklyWeather(city) {
         const forecastTimestamp = forecastData.dt * 1000; // Convert seconds to milliseconds
         const forecastDate = new Date(forecastTimestamp);
 
-        // Check if the forecast date is greater than or equal to today's date
         if (forecastDate > now && daysProcessed < 4) {
           // Extract the day, icon, and description for the card
           const dayName = weekdays[forecastDate.getDay()];
           const iconUrl = `http://openweathermap.org/img/wn/${forecastData.weather[0].icon}.png`;
           const description = forecastData.weather[0].description;
 
-          // Update the small card with the weather data
-          // Update the small cards with the weather data
 const smallCards = document.querySelectorAll('.small-cards');
 
 for (let i = 0; i < smallCards.length; i++) {
@@ -110,18 +93,13 @@ for (let i = 0; i < smallCards.length; i++) {
   // Calculate the day for the small card based on the current day
   const nextDay = new Date(now);
   nextDay.setDate(now.getDate() + i + 1); // Add 1 day, 2 days, 3 days, and 4 days to the current date
-  
-  // Extract the day name, icon, and description for the card
   const dayName = weekdays[nextDay.getDay()];
   const iconUrl = `http://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`;
   const description = data.list[i].weather[0].description;
   
-  // Update the small card with the weather data
   dayElement.textContent = dayName;
   iconElement.src = iconUrl;
   descriptionElement.textContent = description;
-
-            // Increment the days processed
             daysProcessed++;
           }
         }
