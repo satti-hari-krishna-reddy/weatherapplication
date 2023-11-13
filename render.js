@@ -82,7 +82,6 @@ function fetchWeeklyWeather(city) {
           const iconUrl = `http://openweathermap.org/img/wn/${forecastData.weather[0].icon}.png`;
           const description = forecastData.weather[0].description;
 
-const smallCards = document.querySelectorAll('.small-cards');
 
 for (let i = 0; i < smallCards.length; i++) {
   const smallCard = smallCards[i];
